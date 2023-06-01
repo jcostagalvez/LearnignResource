@@ -3,7 +3,7 @@
     <basecard>
         <header>
             <h3>{{ resource.title }}</h3>
-            <basebutton typeButton="borrar"> Borrar </basebutton>
+            <basebutton @click.native="deleteResource"  typeButton="borrar"> Borrar </basebutton>
         </header>
 
         <p>{{resource.description}}</p>
@@ -20,6 +20,7 @@ import basecard from './UI/BaseCard.vue';
 import basebutton from './UI/BaseButton.vue';
 export default {
     name: 'learningResource',
+    inject:['resources'],
     components: {
         basecard, 
         basebutton
@@ -28,6 +29,15 @@ export default {
         resource:{
             type:Object,
             default: null
+        }
+    },
+    methods:{
+        deleteResource(){
+            
+            const resourceToDelete = this.resources.find(r => r.id == this.resource.id);
+            const index = this.resource.indexOf(resourceToDelete);
+            console.log(index);
+            //this.resources.splice(resourceToDelete,1);
         }
     }
 }
