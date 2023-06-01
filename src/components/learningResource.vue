@@ -3,12 +3,12 @@
     <basecard>
         <header>
             <h3>{{ resource.title }}</h3>
-            <button> Delete </button>
+            <basebutton typeButton="borrar"> Borrar </basebutton>
         </header>
 
         <p>{{resource.description}}</p>
         <nav>
-            <a :href="resource.link"> View Resource </a>
+            <a :href="resource.link"> Ver Link </a>
         </nav>
     </basecard>
 
@@ -16,11 +16,14 @@
 </template>
 
 <script>
-import basecard from './UI/BaseCard.vue'
-
+import basecard from './UI/BaseCard.vue';
+import basebutton from './UI/BaseButton.vue';
 export default {
     name: 'learningResource',
-    components: basecard,
+    components: {
+        basecard, 
+        basebutton
+    },
     props:{
         resource:{
             type:Object,

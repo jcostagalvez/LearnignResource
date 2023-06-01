@@ -15,7 +15,7 @@ export default {
 <style>
 .title{
     margin: 0%;
-    background: green;
+    background: rgb(28, 74, 28);
     height: 5rem;
     display: flex;
     flex-direction: column;

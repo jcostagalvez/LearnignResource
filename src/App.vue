@@ -1,17 +1,17 @@
 <template>
   <div id="app">
     <headerapp :title="title"/>
-    <storedresources/>
+    <resources/>
   </div>
 </template>
 
 <script>
-import storedresources from './components/StoredResources.vue'
+import resources from './components/TheResources.vue'
 import headerapp from './components/layouts/HeaderApp'
 export default {
   name: 'App',
   components: {
-    storedresources,
+    resources,
     headerapp
   },
   data (){
