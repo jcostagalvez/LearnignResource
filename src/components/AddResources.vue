@@ -1,5 +1,16 @@
 <template>
   <div class="form-container">
+
+    <basedialog v-if="inputIsInvalid" title="ERROR">
+        <!-- Rellenar los diferentes slots -->
+        <template #body> 
+            <p> Uno de los valores esta vacio, por favor rellene todos los valores para ingresar un recurso</p>
+        </template>
+        <template #actions> 
+            <basebutton @click.native="closeModal"  typeButton="borrar"> Cerrar </basebutton>
+        </template>
+    </basedialog>
+
     <form @submit.prevent="submitData">
         <div class="form_field">
             <label for="title"> Titulo</label>
@@ -22,19 +33,35 @@
 
 <script>
 import basebutton from './UI/BaseButton.vue';
+import basedialog from './UI/BaseDialog.vue';
 
 export default {
     components:{ 
-        basebutton
+        basebutton,
+        basedialog
     },
     inject:['addResource'],
+    data(){
+        return{
+            inputIsInvalid : false
+        }
+    },
     methods:{
-        submitData(){   
+        submitData(){  
             const title = this.$refs.titleinput.value;
             const description = this.$refs.descriptioninput.value;
             const url = this.$refs.urlinput.value;
 
-            this.addResource(title, description, url);
+            if(title.trim() == '' || description.trim() == '' || url.trim() == ''){
+                console.log('esta vacio');
+                this.inputIsInvalid = true;
+            }else{
+                this.addResource(title, description, url);
+            }
+        },
+
+        closeModal(){
+            this.inputIsInvalid = false
         }
     }
 }

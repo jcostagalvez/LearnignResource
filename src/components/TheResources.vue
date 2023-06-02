@@ -13,6 +13,7 @@ import basecard from './UI/BaseButton.vue';
 import basebutton from './UI/BaseButton.vue';
 import storedresources from './StoredResources.vue';
 import addresources from './AddResources.vue';
+
 export default {
     name: 'theResources',
     components: {
